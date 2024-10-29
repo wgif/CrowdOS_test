@@ -15,11 +15,28 @@ public interface Task extends Decomposable<Task> {
     }
 
     // Defining a new type called `TaskStatus` with three possible values: `READY`, `IN_PROGRESS`, and `FINISHED`.
+    //Added a new type: 'INTERRUPTED'.
     enum TaskStatus {
         READY,
         IN_PROGRESS,
+        INTERRUPTED,
         FINISHED,
     }
+    //new
+    enum TaskPriority {
+        LOW,
+        MEDIUM,
+        HIGH,
+        URGENT;
+    }
+
+    /**
+     * Sets the priority of the task to the given priority.
+     *
+     * @param priority The priority of the task.
+     */
+    void  setTaskPriority(TaskPriority priority);
+    //new_end
 
     /**
      * Returns the type of task distribution used in the simulation
@@ -34,13 +51,23 @@ public interface Task extends Decomposable<Task> {
      * @return The task status is being returned.
      */
     TaskStatus getTaskStatus();
+
+
+    //new
+    /**
+     * Returns the priority of the task.
+     *
+     * @return The task priority is being returned.
+     */
+    TaskPriority getTaskPriority();
+    //new_end
+
     /**
      * Sets the status of the task to the given status.
      *
      * @param status The status of the task.
      */
     void setTaskStatus(TaskStatus status);
-
     /**
      * Returns a list of constraints that are applied to the field.
      *
